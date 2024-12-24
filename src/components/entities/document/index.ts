@@ -46,18 +46,15 @@ export const useRenameDocumentMutation = () => {
 
 const getDocument = async (filename: string) => {
   /*
-	 * curl -X 'GET' \
-  'http://localhost:8000/document?filename=test.xls' \
-  -H 'accept: application/json'*/
+	       * curl -X 'GET' \
+	'http://localhost:8000/document?filename=test.xls' \
+	-H 'accept: application/json'*/
 
-  const response = await fetch(
-    buildUrl(`document?filename=${filename}`),
-    {
-      headers: {
-        accept: "application/json",
-      },
+  const response = await fetch(buildUrl(`document?filename=${filename}`), {
+    headers: {
+      accept: "application/json",
     },
-  );
+  });
 
   const json = await response.json();
   return json;
@@ -70,13 +67,10 @@ export const useDocumentQuery = (filename: string) => {
 };
 
 const deleteDocument = async (filename: string) => {
-  const response = await fetch(
-    buildUrl(`document?filename=${filename}`),
-    {
-      method: "delete",
-      headers: { accept: "application/json" },
-    },
-  );
+  const response = await fetch(buildUrl(`document?filename=${filename}`), {
+    method: "delete",
+    headers: { accept: "application/json" },
+  });
 
   const json = await response.json();
 };

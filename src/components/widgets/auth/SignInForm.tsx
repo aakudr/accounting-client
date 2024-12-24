@@ -13,7 +13,7 @@ export const SignInForm = () => {
         password: yup.string().required("Required"),
       })}
       onSubmit={(values) => {
-        console.log(values);
+		window.location.href = "/document-list";
       }}
     >
       {({
