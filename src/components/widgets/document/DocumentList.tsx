@@ -21,6 +21,7 @@ import * as Yup from "yup";
 
 import { Download, Eye, Pencil, Trash } from "lucide-react";
 import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { buildUrl } from "@/lib/constants";
 
 const compactMode = true;
 
@@ -247,7 +248,7 @@ export const DocumentList = () => {
     [file],
   );
   const handleFileUpload = async (formData: FormData) => {
-    const response = await fetch("http://localhost:8000/upload", {
+    const response = await fetch(buildUrl("upload"), {
       method: "POST",
       body: formData,
     });

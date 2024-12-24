@@ -1,7 +1,8 @@
+import { buildUrl } from "@/lib/constants";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 const getDocumentList = async () => {
-  const response = await fetch("http://localhost:8000/document/list", {
+  const response = await fetch(buildUrl("document/list"), {
     method: "GET",
     headers: {
       accept: "application/json",
@@ -26,7 +27,7 @@ const renameDocument = async (payload: {
   const { old_name, new_name } = payload;
 
   const response = await fetch(
-    `http://localhost:8000/document/rename?old_name=${old_name}&new_name=${new_name}`,
+    buildUrl(`document/rename?old_name=${old_name}&new_name=${new_name}`),
     {
       method: "POST",
       headers: {
@@ -50,7 +51,7 @@ const getDocument = async (filename: string) => {
   -H 'accept: application/json'*/
 
   const response = await fetch(
-    `http://localhost:8000/document?filename=${filename}`,
+    buildUrl(`document?filename=${filename}`),
     {
       headers: {
         accept: "application/json",
@@ -70,7 +71,7 @@ export const useDocumentQuery = (filename: string) => {
 
 const deleteDocument = async (filename: string) => {
   const response = await fetch(
-    `http://localhost:8000/document?filename=${filename}`,
+    buildUrl(`document?filename=${filename}`),
     {
       method: "delete",
       headers: { accept: "application/json" },
